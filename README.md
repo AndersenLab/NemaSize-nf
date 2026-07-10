@@ -69,9 +69,9 @@ source activate /data/eande106/software/conda_envs/nf24_env
 export NXF_SINGULARITY_CACHEDIR=/vast/eande106/singularity
 
 cd ~
-nextflow run /vast/eande106/projects/John/Repo/NemaSize-nf/main.nf \
+nextflow run andersenlab/nemasize-nf \
   --data_f /path/to/your/data_folder \
-  -w /vast/eande106/projects/John/Repo/NemaSize-nf/work
+  -w /path/to/your/work_dir
 ```
 
 That's it — no `-profile rockfish` needed (the default profile already maps
@@ -108,10 +108,10 @@ If you genuinely need bigger batches, raise **both**:
 
 ```bash
 cd ~
-nextflow run /vast/eande106/projects/John/Repo/NemaSize-nf/main.nf \
+nextflow run andersenlab/nemasize-nf \
   --data_f /vast/eande106/projects/John/NemaSeg/Datasets/John/Parallel_test \
   --batch_size 20 \
-  -w /vast/eande106/projects/John/Repo/NemaSize-nf/work
+  -w /vast/eande106/projects/John/work/nemasize-nf
 ```
 
 For 103 images at `--batch_size 20` this produces 6 SLURM jobs
