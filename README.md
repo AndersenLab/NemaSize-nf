@@ -29,7 +29,7 @@ wall time and uses no GPU quota.
            │  ── barrier (collect → flatMap) ──
            ▼
 ┌──────────────────────┐
-│ RUN_BATCH (×N, SLURM)│   singularity NemaSize on each batch
+│ RUN_BATCH (×N, SLURM)│   runs NemaSize via Singularity on each batch
 └──────────┬───────────┘
            │  ── barrier (collect) ──
            ▼
@@ -45,8 +45,8 @@ wall time and uses no GPU quota.
 
 The two `collect` barriers guarantee:
 - `RUN_BATCH` only starts after every batch directory exists, and
-- `MERGE_RESULTS` only runs after every `RUN_BATCH` succeeded (any failure
-  aborts the run before merge / cleanup).
+- `MERGE_RESULTS` only runs after every `RUN_BATCH` task has succeeded (any
+  failure aborts the run before merge / cleanup).
 
 ## Requirements
 
@@ -65,7 +65,7 @@ From your home directory (avoids NFS file-lock issues on `/vast`):
 module load anaconda
 source activate /data/eande106/software/conda_envs/nf24_env
 
-# tell Nextflow where the shared singularity cache lives
+# tell Nextflow where the shared Singularity cache lives
 export NXF_SINGULARITY_CACHEDIR=/vast/eande106/singularity
 
 cd ~
