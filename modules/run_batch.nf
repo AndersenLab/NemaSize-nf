@@ -6,14 +6,14 @@
 //          written inference_rois/ and NemaSize_output/ inside batch_dir.
 //
 // The container is the cached SIF in NXF_SINGULARITY_CACHEDIR; Nextflow rewrites
-// 'zihaojohnli/nemasize:cpu-batch' to <cache>/zihaojohnli-nemasize-cpu-batch.img
+// 'zihaojohnli/nemasize:1.0.0-cpu' to <cache>/zihaojohnli-nemasize-1.0.0-cpu.img
 // automatically. The batch dir is bound at the same path inside the container
 // so the absolute paths inside batch_<i>.txt resolve unchanged.
 
 process RUN_BATCH {
     tag { batch_id }
 
-    container 'zihaojohnli/nemasize:cpu-batch'
+    container 'zihaojohnli/nemasize:1.0.0-cpu'
     containerOptions "--bind ${params.data_f}:${params.data_f}"
 
     input:

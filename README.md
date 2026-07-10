@@ -1,7 +1,7 @@
 # NemaSize-nf
 Author: Zihao John Li, Apr 2026 (revised Jun 2026 for Rockfish CPU)
 
-A Nextflow pipeline that runs [NemaSize](https://github.com/zihaojohnli/NemaSeg)
+A Nextflow pipeline that runs [NemaSize](https://github.com/AndersenLab/NemaSize)
 on *C. elegans* images by scattering hundreds of small CPU jobs across the
 Rockfish `parallel` partition. Replaces the old "submit one big GPU job to
 DSAI" flow — for typical datasets the parallelized CPU run finishes in less
@@ -54,7 +54,7 @@ The two `collect` barriers guarantee:
 - Access to the Rockfish `parallel` partition (most users have this)
 - A shared Singularity image cache. The lab convention is
   `/vast/eande106/singularity/`; the NemaSize CPU image is pre-staged at
-  `/vast/eande106/singularity/zihaojohnli-nemasize-cpu-batch.img`.
+  `/vast/eande106/singularity/zihaojohnli-nemasize-1.0.0-cpu.img`.
 - Your data folder must contain a `raw_images/` subfolder of `.tif/.tiff/.png/.jpg/.jpeg`.
 
 ## Quick start
@@ -127,7 +127,7 @@ After a successful run:
 └── NemaSize_output/
     ├── roi_catalog.json                 (ROI metadata, merged from all batches)
     └── skeleton/
-        ├── worm_lengths.csv             (single header, all rows concatenated)
+        ├── worm_sizes.csv               (single header, all rows concatenated)
         └── contour_skeleton_txt/        (per-ROI contour+skeleton .txt files)
 ```
 

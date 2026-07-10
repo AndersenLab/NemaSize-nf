@@ -4,14 +4,14 @@ Merge per-batch NemaSize outputs into a single <data_f>/NemaSize_output/ tree.
 
 Inputs (per batch dir):
     batch_<i>/inference_rois/roi_catalog.json
-    batch_<i>/NemaSize_output/skeleton/worm_lengths.csv
+    batch_<i>/NemaSize_output/skeleton/worm_sizes.csv
     batch_<i>/NemaSize_output/skeleton/contour_skeleton_txt/*.txt
 
 Output (single, mirrors the original DSAI layout):
     <data_f>/NemaSize_output/
         roi_catalog.json
         skeleton/
-            worm_lengths.csv
+            worm_sizes.csv
             contour_skeleton_txt/*.txt
 
 Fails if <data_f>/NemaSize_output/ already exists, unless --force is given.
@@ -41,7 +41,7 @@ def merge(batch_dirs: list[Path], out_root: Path, force: bool) -> None:
     txt_out.mkdir(parents=True, exist_ok=True)
 
     catalog: dict = {}
-    csv_path = skel_out / "worm_lengths.csv"
+    csv_path = skel_out / "worm_sizes.csv"
     csv_header_written = False
 
     n_csv_rows = 0
@@ -66,8 +66,8 @@ def merge(batch_dirs: list[Path], out_root: Path, force: bool) -> None:
             else:
                 print(f"WARN: missing {cat_in}", file=sys.stderr)
 
-            # ---- worm_lengths.csv ----
-            csv_in = bdir / "NemaSize_output" / "skeleton" / "worm_lengths.csv"
+            # ---- worm_sizes.csv ----
+            csv_in = bdir / "NemaSize_output" / "skeleton" / "worm_sizes.csv"
             if csv_in.is_file():
                 with csv_in.open("r", encoding="utf-8") as f:
                     header = f.readline()
