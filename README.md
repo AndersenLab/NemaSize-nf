@@ -70,12 +70,21 @@ export NXF_SINGULARITY_CACHEDIR=/vast/eande106/singularity
 
 cd ~
 nextflow run andersenlab/nemasize-nf \
+  -latest \
   --data_f /path/to/your/data_folder \
   -w /path/to/your/work_dir
 ```
 
 That's it — no `-profile rockfish` needed (the default profile already maps
 to the Rockfish config).
+
+> **Why `-latest`?** Nextflow caches a pulled pipeline locally the first
+> time you run it and silently reuses that cached copy on every later run —
+> it does **not** check for new commits on its own. Since this repo has no
+> version tags yet, `-latest` tells Nextflow to pull the current HEAD of the
+> default branch before running, so you always get the newest fixes. Drop it
+> only if you deliberately want to keep re-running whatever revision you
+> already have cached (e.g. for exact reproducibility of a previous run).
 
 ## Parameters
 
@@ -109,6 +118,7 @@ If you genuinely need bigger batches, raise **both**:
 ```bash
 cd ~
 nextflow run andersenlab/nemasize-nf \
+  -latest \
   --data_f /vast/eande106/projects/John/NemaSeg/Datasets/John/Parallel_test \
   --batch_size 20 \
   -w /vast/eande106/projects/John/work/nemasize-nf
