@@ -1,8 +1,8 @@
 # NemaSize-nf
-Author: Zihao John Li, Apr 2026 (revised Jun 2026 for Rockfish CPU)
+**Author**: Zihao (John) Li, Apr 2026 (revised Jun 2026 for Rockfish CPU)
 
 A Nextflow pipeline that runs [NemaSize](https://github.com/AndersenLab/NemaSize)
-on *C. elegans* images by scattering hundreds of small CPU jobs across the
+on nematode images by distributing hundreds of small CPU jobs across the
 Rockfish `parallel` partition. Replaces the old "submit one big GPU job to
 DSAI" flow — for typical datasets the parallelized CPU run finishes in less
 wall time and uses no GPU quota.
@@ -135,6 +135,10 @@ Set `--clean_intermediate false` if you want to keep `<data_f>/batches/`
 around for debugging (each `batches/batch_<i>/` holds that batch's
 unmerged `NemaSize_output/`).
 
+See [NemaSize README § 5. Outputs](https://github.com/AndersenLab/NemaSize#5-outputs)
+for the full `worm_sizes.csv` column schema and the `.txt` contour/skeleton
+format.
+
 ## Resuming and re-running
 
 - **Resume:** `nextflow run … -resume` — skips any task whose inputs are
@@ -221,3 +225,38 @@ the full details and SLURM resource defaults.
 > none of the legacy processes set a `container` directive, so it has no
 > effect on them — you can run either pipeline against the same config
 > without changes.
+
+---
+
+## License
+
+This repository is released under the [Apache License 2.0](LICENSE).
+
+---
+
+## Citation
+
+If you use NemaSize-nf in your research, please cite the NemaSize paper:
+
+> Li Z, Shaver AO, Sauria MEG, Weinstein J, Mastronardo MK, Jhaveri NS,
+> Stone K, Choo R, Lilley C, Sharma E, Shrishrimal R, Benson G, Shi A,
+> Soko C, Andersen EC. *Multiscale learning and topological analysis
+> across complex postures enable robust nematode size quantification in
+> pharmacological assays*. bioRxiv (in preparation), 2026.
+
+*(BibTeX entry and DOI will be added once the manuscript is posted to
+bioRxiv / published.)*
+
+Please also cite this repository itself if you use or adapt the pipeline:
+
+> NemaSize-nf [Computer software]. Andersen Lab, Johns Hopkins
+> University. <https://github.com/AndersenLab/NemaSize-nf>
+
+---
+
+## Contact
+
+Bug reports, edge cases, and feedback are very welcome.
+
+- Zihao (John) Li: <lizihaojohn@outlook.com>
+- Erik C. Andersen (PI): <erik.andersen@gmail.com>
