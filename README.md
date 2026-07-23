@@ -252,10 +252,9 @@ If you use NemaSize-nf in your research, please cite the NemaSize paper:
 > Stone K, Choo R, Lilley C, Sharma E, Shrishrimal R, Benson G, Shi A,
 > Soko C, Andersen EC. *Multiscale learning and topological analysis
 > across complex postures enable robust nematode size quantification in
-> pharmacological assays*. bioRxiv (in preparation), 2026.
+> pharmacological assays*. bioRxiv, 2026.
 
-*(BibTeX entry and DOI will be added once the manuscript is posted to
-bioRxiv / published.)*
+doi: [https://doi.org/10.64898/2026.07.12.738008](https://doi.org/10.64898/2026.07.12.738008)
 
 Please also cite this repository itself if you use or adapt the pipeline:
 
